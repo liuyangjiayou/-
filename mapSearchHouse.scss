@@ -1,0 +1,392 @@
+@import "base.css";
+$green : #00ac66;
+$red : #fd4c3a;
+html,body{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+body{
+  position: relative;
+  box-sizing: border-box;
+}
+.header{
+  position: relative;
+  z-index: 3;
+  .headerBox{
+    padding: 0 30px;
+  }
+}
+
+.tools{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 0 10px;
+    height: 42px;
+    line-height: 42px;
+    z-index: 1000;
+    background: $green;
+    color: #fff;
+    cursor: pointer;
+    i{
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 2px;
+      width: 14px;
+      height: 14px;
+      background: url("../static/images/hua1.png") no-repeat;
+      -webkit-background-size: cover;
+      background-size: cover;
+    }
+  }
+.tools.active{
+    color: #fff;
+    i{
+      background: url("../static/images/hua1.png") no-repeat;
+    }
+  }
+.map-box{
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .tools-reset{
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    padding: 0 10px;
+    height: 40px;
+    line-height: 40px;
+    z-index: 4;
+    cursor: pointer;
+    background: #fff;
+    color: $green;
+    border: 1px solid #ebebeb;
+    i{
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 10px;
+      width: 14px;
+      height: 14px;
+      background: url("../static/images/hua3.png") no-repeat;
+      -webkit-background-size: cover;
+      background-size: cover;
+    }
+  }
+}
+#map{
+  width: 100%;
+  height: 100%;
+}
+.house-list{
+  display: none;
+  position: absolute;
+  top: 0;
+  left: -440px;
+  box-sizing: border-box;
+  padding: 0 0 0 24px;
+  width: 440px;
+  height: 100%;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  z-index: 0;
+  .house-title{
+    padding: 16px 0 12px 0;
+    width: 388px;
+    margin: 0 auto;
+    border-bottom: 1px solid #ebebeb;
+    h5{
+      height: 36px;
+      line-height: 36px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    p{
+      height: 26px;
+      line-height: 26px;
+      font-size: 14px;
+      color: #999999;
+      span{
+        margin-right: 10px;
+      }
+    }
+    p.info{
+      font-size: 12px;
+      color: #999999;
+    }
+    .average-num{
+      font-size: 16px;
+      color: #323942;
+    }
+  }
+  .house-box{
+    box-sizing: border-box;
+    width: 403px;
+    height: 100%;
+    .house-num{
+      padding-top: 12px;
+      height: 31px;
+      line-height: 31px;
+      font-weight: bold;
+      font-size: 14px;
+      color: #333333;
+      span{
+        margin: 0 5px;
+        color: $green;
+      }
+    }
+    .house-nav{
+      li{
+        float: left;
+        margin-right: 26px;
+        height: 23px;
+        line-height: 23px;
+        font-size: 14px;
+        color: #535d6a;
+        cursor: pointer;
+      }
+      li.active{
+        color: $green;
+        border-bottom: 2px solid $green;
+      }
+    }
+    .house-container{
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      ul{
+        box-sizing: border-box;
+        padding-right: 10px;
+        padding-bottom: 200px;
+        height: 100%;
+        overflow: auto;
+      }
+      li{
+        position: relative;
+        padding:20px 0 ;
+        a{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+        .right{
+          width: 234px;
+          .title{
+            font-size: 14px;
+            color: #323942;
+            line-height: 14px;
+            font-weight: bold;
+          }
+          .info{
+            margin-top: 10px;
+            line-height: 28px;
+            .l{
+              font-size: 14px;
+              color: #999999;
+            }
+            .r{
+              font-family: Tahoma;
+              font-weight: bold;
+              font-size: 16px;
+              color: #fd4c3a;
+            }
+          }
+          .tag-box{
+            margin-top: 30px;
+            span{
+              margin-right: 6px;
+              float: left;
+              padding: 0 6px;
+              height: 20px;
+              line-height: 20px;
+              text-align: center;
+              color: #859aad;
+              font-size: 14px;
+              background: #f3f7fa;
+            }
+          }
+        }
+        .img-box{
+          width: 140px;
+          height: 104px;
+          background: url("../static/images/loadImg.jpg") no-repeat;
+          -webkit-background-size: cover;
+          background-size: cover;
+        }
+      }
+    }
+    //买卖列表样式
+    .house-container.house-container-second .price{
+      font-size: 20px;
+      line-height: 20px;
+      color: #fd4c3a;
+      font-weight: bold;
+      font-family: Tahoma;
+    }
+    .house-container.house-container-second ul li .right .title{
+      margin-top: 10px;
+      line-height: 24px;
+    }
+    .house-container.house-container-second ul li .right .info{
+      margin-top: 0;
+      line-height: 20px;
+    }
+    .house-container.house-container-second ul li .right .tag-box{
+      margin-top: 14px;
+    }
+    ::-webkit-scrollbar
+    {
+      width: 4px;
+      height: 4px;
+      background-color: #b5b4b4;
+    }
+    /*定义滚动条轨道 内阴影+圆角*/
+    ::-webkit-scrollbar-track
+    {
+      -webkit-box-shadow: inset 0 0 5px rgba(240,240,240,0.7);
+      border-radius: 10px;
+      background: #f0f0f0;
+    }
+    /*定义滑块 内阴影+圆角*/
+    ::-webkit-scrollbar-thumb
+    {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 5px rgba(181,180,180,0.7);
+      background: #b5b4b4;
+    }
+  }
+  .close-list{
+    position: absolute;
+    top: 422px;
+    right: -28px;
+    width: 28px;
+    height : 100px;
+    line-height: 100px;
+    font-family: SimSun;
+    font-size: 28px;
+    font-weight: bold;
+    color: $green;
+    text-align: center;
+    background: #fff;
+    border-top: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    cursor: pointer;
+  }
+}
+.house-list.active{
+  display: block;
+}
+.palette{
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  cursor: url("//ued.taobao.com/blog/wp-content/themes/taobaoued/images/cursor.ico"),auto;
+}
+
+.mapMark-list{
+  position: absolute;
+  padding: 0 10px;
+  height: 34px;
+  line-height: 34px;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  background: #00ac66;
+  z-index: 10;
+
+}
+.mapMark-list .mapMark-list-arr{
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  bottom: -5px;
+  left: 50%;
+  background: #00a75b;
+  margin-left: -5px;
+  display: inline-block;
+  transform: rotate(45deg);
+  z-index: 1000;
+}
+.mapMark-list.active{
+  background: #fd4c3a;
+  z-index: 10000;
+}
+.mapMark-list.active .mapMark-list-arr{
+  background: #fd4c3a;
+}
+.mapMark-list.clickActive{
+  background: #fd4c3a;
+}
+.mapMark-list.clickActive .mapMark-list-arr{
+  background: #fd4c3a;
+}
+.mapMark-list .name{
+  margin-right: 10px;
+}
+.alert-box{
+  display: none;
+  position: absolute;
+  top: -184px;
+  left: 50%;
+  margin-left: -200px;
+  width: 400px;
+  box-sizing: border-box;
+  background: #fff;
+  
+}
+.alert-box .alert-box-arr{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  bottom: -10px;
+  left: 50%;
+  background: #fff;
+  margin-left: -10px;
+  transform: rotate(45deg);
+}
+.alert-box .img-box{
+  margin: 20px;
+  width: 140px;
+  height: 104px;
+  background: url("../static/images/loadImg.jpg") no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+
+}
+.alert-box .right{
+  padding: 14px 0 14px 0;
+  width: 200px;
+  text-align: left;
+}
+.alert-box .right .title{
+  margin-bottom: 15px;
+  line-height: 26px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #323942;
+  white-space : normal;
+}
+.alert-box .right .text{
+  font-size: 14px;
+  color: #999999;
+  line-height: 22px;
+  white-space : normal;
+}
+.mapMark-list .mapMark-list-bg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 20;
+}
+

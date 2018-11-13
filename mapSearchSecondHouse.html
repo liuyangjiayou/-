@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>地图找房</title>
+    <link rel="stylesheet" href="//api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css"/>
+</head>
+<body>
+<div class="tools-arr">
+
+</div>
+<div class="map-box map_box">
+    <div class="tools">
+        <i></i>
+        <span>画圈找房</span>
+    </div>
+    <div id="map"></div>
+    <div class="palette"></div>
+</div>
+<div class="house-list">
+    <div class="house-title">
+        <h5 class="real_name"></h5>
+        <p class="info"></p>
+        <p class="average"><span class="average-num">暂无均价</span><span class="month">3月参考均价</span></p>
+    </div>
+    <div class="house-box">
+        <p class="house-num">共为您找到<span class="house_num"></span>套房源</p>
+        <ul class="house-nav ovh house_nav">
+            <li class="active" state="0">默认</li>
+            <li state="1" sortState="0">按总价</li>
+            <li state="2" sortState="0">按面积</li>
+            <li state="3" sortState="0">最新</li>
+        </ul>
+        <div class="house-container house-container-second house_container">
+            <script type="text/html" id="houseListHtml">
+                <ul>
+                    {{ each list as item index}}
+                    <li class="ovh">
+                        <a href="javascript:;" class="houseInfo"  infoUrl="{{item.url}}"></a>
+                        <div class="img-box l left">
+                            <img src="{{item.img}}">
+                        </div>
+                        <div class="r right">
+                            <p class="price">{{item.price}}万</p>
+                            <p class="title ell"><span>{{item.title}}</span></p>
+                            <p class="info ovh">
+                                <span class="l">{{item.info}}</span>
+                            </p>
+                            <p class="tag-box ovh">
+                                {{ each item.tags as tag index}}
+                                <span>{{tag}}</span>
+                                {{ /each}}
+                            </p>
+                        </div>
+                    </li>
+                    {{ /each}}
+                </ul>
+            </script>
+        </div>
+    </div>
+    <div class="close-list house-close-list" state="0">&lt;</div>
+</div>
+<input type="hidden" class="mapPoint" mapCenter="114.518331,38.049075">
+<slot name="JQ"></slot>
+<slot name="BMAP"></slot>
+<slot name="BDM"></slot>
+<slot name="BGU"></slot>
+<!--<slot name="BBOX"></slot>-->
+</body>
+</html>
